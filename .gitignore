@@ -1,0 +1,19 @@
+<<<<<<< HEAD
+=======
+settings.py
+post_tweet.sh
+
+>>>>>>> 338fd274c5b2a670e9e60857eb186fdca179fe33
+*.swp
+*.pyc
+.DS_Store
+.Python
+<<<<<<< HEAD
+=======
+pip-selfcheck.json
+>>>>>>> 338fd274c5b2a670e9e60857eb186fdca179fe33
+
+# virtualenv
+bin/
+include/
+lib/
