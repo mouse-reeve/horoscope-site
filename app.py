@@ -23,17 +23,44 @@ def get_horoscope():
 
 def horoscope_data():
     ''' Get a generated horoscope '''
-    animals = ['hermit crab', 'puppy', 'seagull', 'sea slug']
+    animals = [
+        'hermit crab',
+        'puppy',
+        'seagull',
+        'sea slug',
+        'giraffe',
+        'pigeon',
+        'gnat',
+        'armadillo',
+        'nutria',
+        'alligator',
+        'blobfish',
+        'earthworm'
+    ]
+
     icons = [
-        u'\u263C', # sun
+        u'\u2609', # sun symbol,
+        u'\u263F', # mercury symbol
         u'\u2694', # swords
+        u'\u2695', # staff of aesculapius
+        u'\u269A', # staff of hermes
+        u'\u2727', # four point star
         u'\u2696', # scales
         u'\u00F8', # o slash
+        u'\u260D', # two connected circles
         u'\u2741', # flower
         u'\u26B1', # urn
-        u'\u269A', # staff of hermes
         u'\u27E1', # concave diamond
-        u'\u2932', # crosses arrows
+        u'\u2932', # crossed arrows
+        u'\u2949', # up arrows from circle
+        u'\u2635', # water tetragram
+        u'\u2638', # wheel of dharma
+        u'\u2644', # saturn
+        u'\u2645', # uranus
+        u'\u2646', # neptune
+        u'\u221E', # infinity
+        u'\u2021', # footnote symbol
+        u'\u25C7', # diamond
     ]
 
     horoscope = HoroscopeGenerator.format_sentence(HoroscopeGenerator.get_sentence())
