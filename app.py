@@ -5,17 +5,17 @@ import json
 import random
 
 # Config
-APP = Flask(__name__)
+app = Flask(__name__)
 
 
 # ROUTES
-@APP.route('/')
+@app.route('/')
 def index():
     ''' render the basic template for angular '''
     return render_template('index.html', data=horoscope_data())
 
 
-@APP.route('/api/horoscope', methods=['GET'])
+@app.route('/api/horoscope', methods=['GET'])
 def get_horoscope():
     ''' return horoscope data to client '''
     return json.dumps(horoscope_data())
@@ -49,6 +49,6 @@ def horoscope_data():
 
 
 if __name__ == '__main__':
-    APP.debug = True
-    APP.run(port=4000)
+    app.debug = True
+    app.run(port=4000)
 
