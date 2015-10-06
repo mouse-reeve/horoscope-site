@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <title>~ Z O D I A C ~</title>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="static/format.css">
+
+    <script src="static/main.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Horoscope Generator</h1>
+    </header>
+
+    <div id="content">
+        <p id="icon">{{ data.icon }}</p>
+
+        <p id="horoscope" style="color: #{{ data.color }}">{{ data.horoscope }}</p>
+        <p id="animal">Lucky Animal: {{ data.animal }}</p>
+    </div>
+
+    <footer>
+        <h1>Church of Dada</h1>
+    </footer>
+</body>
+</html>
