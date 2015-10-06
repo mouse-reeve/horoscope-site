@@ -23,7 +23,6 @@ def get_horoscope():
 
 def horoscope_data():
     ''' Get a generated horoscope '''
-
     animals = ['hermit crab', 'puppy', 'seagull', 'sea slug']
     icons = [
         u'\u263C', # sun
