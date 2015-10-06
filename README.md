@@ -1,3 +1,3 @@
 # horoscope site
 
-A beautiful site for generative fortunes
+Displays Church of Dada fortunes
