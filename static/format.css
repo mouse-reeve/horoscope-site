@@ -1,3 +1,9 @@
+@media (max-width: 50em) {
+    #horoscope {
+        font-size: 3.5em !important;
+    }
+}
+
 header, footer {
     text-transform: uppercase;
     text-align: center;

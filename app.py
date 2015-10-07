@@ -1,6 +1,6 @@
 ''' a generative horoscope site '''
 import base64
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, url_for
 from horoscope_generator import HoroscopeGenerator
 import random
 
@@ -42,14 +42,25 @@ def index():
 @app.route('/<uid>', methods=['GET'])
 def load_fortune(uid):
     ''' display a specific fortune from uid '''
-    content = base64.b64decode(uid)
+    try:
+        content = base64.b64decode(uid)
+    except TypeError:
+        return redirect(url_for('index'))
     items = content.split('|')
-    data = {
-        'horoscope': items[0],
-        'animal': items[1],
-        'icon': icons[items[2]],
-        'color': items[3]
-    }
+
+    if len(items) != 4:
+        return redirect(url_for('index'))
+
+    try:
+        data = {
+            'horoscope': items[0],
+            'animal': items[1],
+            'icon': icons[items[2]],
+            'color': items[3]
+        }
+    except IndexError:
+        return redirect(url_for('index'))
+
     return render_template('index.html', data=data)
 
 
