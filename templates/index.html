@@ -4,6 +4,7 @@
     <title>F O R T U N E S</title>
     <meta name=viewport content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="static/format.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -12,14 +13,13 @@
     </header>
 
     <div id="content">
-        <p id="icon">{{ data.icon }}</p>
+        <p id="icon"><a href="/">{{ data.icon }}</a></p>
 
         <p id="horoscope" style="color: #{{ data.color }}">{{ data.horoscope }}</p>
         <p id="animal">Lucky Animal: {{ data.animal }}</p>
         {% if data.uid %}
-        <p><a href="/{{ data.uid }}">link to this fortune</a></p>
+        <p class="permalink"><a href="/{{ data.uid }}"><i class="fa fa-link"></i></a></p>
         {% endif %}
-        <p><a href="/">new fortune</a></p>
     </div>
 
     <footer>

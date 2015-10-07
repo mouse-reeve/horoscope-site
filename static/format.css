@@ -12,10 +12,19 @@ header, footer {
     margin: 8em 0;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
 #icon {
     font-family: monospace;
     font-size: 7em;
     margin: 0;
+}
+
+.permalink {
+    font-size: 3em;
 }
 
 #horoscope {
