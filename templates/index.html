@@ -4,8 +4,6 @@
     <title>F O R T U N E S</title>
     <meta name=viewport content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="static/format.css">
-
-    <script src="static/main.js"></script>
 </head>
 
 <body>
@@ -18,6 +16,10 @@
 
         <p id="horoscope" style="color: #{{ data.color }}">{{ data.horoscope }}</p>
         <p id="animal">Lucky Animal: {{ data.animal }}</p>
+        {% if data.uid %}
+        <p><a href="/{{ data.uid }}">link to this fortune</a></p>
+        {% endif %}
+        <p><a href="/">new fortune</a></p>
     </div>
 
     <footer>

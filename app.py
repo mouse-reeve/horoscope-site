@@ -1,12 +1,36 @@
 ''' a generative horoscope site '''
+import base64
 from flask import Flask, render_template
 from horoscope_generator import HoroscopeGenerator
-import json
 import random
 
 # Config
 app = Flask(__name__)
 
+icons = {
+    'sun': u'\u2609',
+    'mercury': u'\u263F',
+    'swords': u'\u2694',
+    'aesculapius': u'\u2695',
+    'hermes': u'\u269A',
+    'star': u'\u2727',
+    'scales': u'\u2696',
+    'oslash': u'\u00F8',
+    '2circles': u'\u260D',
+    'flower': u'\u2741',
+    'urn': u'\u26B1',
+    'concavediamond': u'\u27E1',
+    'crossedarrows': u'\u2932',
+    'uparrows': u'\u2949',
+    'tetragram': u'\u2635',
+    'dharma': u'\u2638',
+    'saturn': u'\u2644',
+    'uranus': u'\u2645',
+    'neptune': u'\u2646',
+    'infinity': u'\u221E',
+    'footnote': u'\u2021',
+    'diamond': u'\u25C7',
+}
 
 # ROUTES
 @app.route('/')
@@ -15,10 +39,18 @@ def index():
     return render_template('index.html', data=horoscope_data())
 
 
-@app.route('/api/horoscope', methods=['GET'])
-def get_horoscope():
-    ''' return horoscope data to client '''
-    return json.dumps(horoscope_data())
+@app.route('/<uid>', methods=['GET'])
+def load_fortune(uid):
+    ''' display a specific fortune from uid '''
+    content = base64.b64decode(uid)
+    items = content.split('|')
+    data = {
+        'horoscope': items[0],
+        'animal': items[1],
+        'icon': icons[items[2]],
+        'color': items[3]
+    }
+    return render_template('index.html', data=data)
 
 
 def horoscope_data():
@@ -38,41 +70,24 @@ def horoscope_data():
         'earthworm'
     ]
 
-    icons = [
-        u'\u2609', # sun symbol,
-        u'\u263F', # mercury symbol
-        u'\u2694', # swords
-        u'\u2695', # staff of aesculapius
-        u'\u269A', # staff of hermes
-        u'\u2727', # four point star
-        u'\u2696', # scales
-        u'\u00F8', # o slash
-        u'\u260D', # two connected circles
-        u'\u2741', # flower
-        u'\u26B1', # urn
-        u'\u27E1', # concave diamond
-        u'\u2932', # crossed arrows
-        u'\u2949', # up arrows from circle
-        u'\u2635', # water tetragram
-        u'\u2638', # wheel of dharma
-        u'\u2644', # saturn
-        u'\u2645', # uranus
-        u'\u2646', # neptune
-        u'\u221E', # infinity
-        u'\u2021', # footnote symbol
-        u'\u25C7', # diamond
-    ]
 
     horoscope = HoroscopeGenerator.format_sentence(HoroscopeGenerator.get_sentence())
-
+    animal = random.choice(animals)
+    icon = random.choice(icons.keys())
     options = [str(i) for i in range(0, 9)] + ['A', 'B', 'C', 'D', 'E', 'F']
-    color = [random.choice(options) for _ in range(6)]
-    return {
+    color = ''.join([random.choice(options) for _ in range(6)])
+
+    data = {
         'horoscope': horoscope,
-        'animal': random.choice(animals),
-        'icon': random.choice(icons),
-        'color': ''.join(color)
+        'animal': animal,
+        'icon': icons[icon],
+        'color': color
     }
+
+    uid = base64.b64encode('%s|%s|%s|%s' % (horoscope, animal, icon, color))
+    data['uid'] = uid
+
+    return data
 
 
 if __name__ == '__main__':
