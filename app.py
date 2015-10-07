@@ -2,6 +2,7 @@
 import base64
 from flask import Flask, redirect, render_template, url_for
 from horoscope_generator import HoroscopeGenerator
+import json
 import random
 
 # Config
@@ -66,21 +67,7 @@ def load_fortune(uid):
 
 def horoscope_data():
     ''' Get a generated horoscope '''
-    animals = [
-        'hermit crab',
-        'puppy',
-        'seagull',
-        'sea slug',
-        'giraffe',
-        'pigeon',
-        'gnat',
-        'armadillo',
-        'nutria',
-        'alligator',
-        'blobfish',
-        'earthworm'
-    ]
-
+    animals = json.load(open('animals.json'))
 
     horoscope = HoroscopeGenerator.format_sentence(HoroscopeGenerator.get_sentence())
     animal = random.choice(animals)
