@@ -68,12 +68,12 @@ def load_fortune(uid):
 def horoscope_data():
     ''' Get a generated horoscope '''
     animals = json.load(open('animals.json'))
+    colors = json.load(open('colors.json'))
 
     horoscope = HoroscopeGenerator.format_sentence(HoroscopeGenerator.get_sentence())
     animal = random.choice(animals)
     icon = random.choice(icons.keys())
-    options = [str(i) for i in range(0, 9)] + ['A', 'B', 'C', 'D', 'E', 'F']
-    color = ''.join([random.choice(options) for _ in range(6)])
+    color = random.choice(colors)
 
     data = {
         'horoscope': horoscope,

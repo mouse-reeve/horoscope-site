@@ -1,3 +1,7 @@
+body {
+    background-color: #f4f4ed;
+}
+
 @media (max-width: 50em) {
     #horoscope {
         font-size: 3em !important;
