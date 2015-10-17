@@ -1,5 +1,5 @@
 body {
-    background-color: #f4f4ed;
+    background-color: white;
 }
 
 @media (max-width: 50em) {
@@ -12,13 +12,13 @@ header, footer {
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 0.2em;
-    font-family: Helvetica, sans-serif;
+    font-family: brandon, Helvetica, sans-serif;
     font-size: 0.7em;
 }
 
 #content {
     text-align: center;
-    font-family: Helvetica, sans-serif;
+    font-family: brandon, Helvetica, sans-serif;
     margin: 8em 0;
 }
 
@@ -38,7 +38,7 @@ a {
 }
 
 #horoscope {
-    font-family: Georgia, serif;
+    font-family: mercury, Georgia, serif;
     font-size: 5em;
     margin: 0.5em;
 }
