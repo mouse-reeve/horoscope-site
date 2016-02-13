@@ -1,7 +1,7 @@
 ''' a generative horoscope site '''
 import base64
 from flask import Flask, redirect, render_template, url_for
-from horoscope_generator import HoroscopeGenerator
+import HoroscopeGenerator
 import json
 import random
 
